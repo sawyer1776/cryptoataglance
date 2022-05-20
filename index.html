@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0"
+		/>
+		<title>Document</title>
+		<link rel="stylesheet" href="style.css" />
+	</head>
+
+	<section class="section-header shadow">
+		<div class="title">
+			<h1 class="heading">Crypto at a glance</h1>
+			<h3 class="subheading">
+				All the info you need in one spot
+			</h3>
+		</div>
+		
+		<ul class="timeframe">
+			<li data-time="3h"  class="time-int"><a href="#"> 3h </a></li>
+			<li data-time="24h"  class="time-int time-active"><a href="#"> 24h</a></li>
+			<li data-time="7d"  class="time-int"><a href="#"> 7d </a></li>
+			<li data-time="30d"  class="time-int"><a href="#"> 30d</a></li>
+			<li data-time="3m"  class="time-int"><a href="#"> 3m </a></li>
+			<li data-time="1y"  class="time-int"><a href="#"> 1y </a></li>
+			<li data-time="3y"  class="time-int"><a href="#"> 3y </a></li>
+			<li data-time="5y"  class="time-int"><a href="#"> 5y </a></li>
+		</ul>
+	</section>
+
+	<section class="section-main">
+		<div class="table-area">
+
+			<table class="table-main shadow">
+				<thead class="header-all">
+					<tr>
+						<th class="header-col"></th>
+						<th
+						data-column="name"
+						data-order="asc"
+						class="header-col"
+						>
+						Name <span class="down arrow">&#9660</span><span class="up arrow"> &#9650</span>
+					</th>
+					<th
+					data-column="marketCap"
+					data-order="asc"
+					class="header-col"
+					>
+					Market Cap <span class="down arrow">&#9660</span><span class="up arrow"> &#9650</span>
+				</th>
+				<th
+				data-column="price"
+				data-order="asc"
+				class="header-col"
+				>
+				Price (usd) <span class="down arrow">&#9660</span><span class="up arrow"> &#9650</span>
+			</th>
+			<th
+			data-column="change"
+			data-order="asc"
+			class="header-col"
+			>
+			change <span class="down arrow">&#9660</span><span class="up arrow"> &#9650</span>
+		</th>
+	</tr>
+</thead>
+<tbody class="table-body">
+	<!-- insert content here -->
+	<!-- <tr class="row">
+		
+		<td > <img class="icon" src="https://cdn.coinranking.com/bOabBYkcX/bitcoin_btc.svg" alt=""></td>
+		<td > <div class="name">Bitcoin</div>
+			<div class="symbol">BTC</div>
+		</td>
+		<td class="market-cap">$723.23B</td>
+		<td class="price">$40,000</td>
+		<td class="change"> -5% </td>
+		
+	</tr> -->
+</tbody>
+</table>
+<div class="pagination-btns">
+	<!-- <button class="btn btn-page-back"><ion-icon name="arrow-back-outline"></ion-icon>Page 1 </button>
+	<button class="btn btn-page-forward">Page 3 <ion-icon name="arrow-forward-outline"></ion-icon></button> -->
+</div>
+</div>
+
+
+<aside class="glances">
+	<div class="glance-box mkt-average loss shadow">
+		<h2 class="title">Market Avg</h2>
+		<h2 class="number mkt-average-number">
+					10.32%
+					<ion-icon
+						class="down-arrow"
+						name="caret-down-outline"
+					></ion-icon>
+				</h2>
+			</div>
+			<div class="glance-box biggest-gain shadow">
+				<div>
+					<h2 class="title">Biggest Gain</h2>
+					<div class="glance-coin">
+						<img
+							class="icon biggest-gain-icon"
+							src="https://cdn.coinranking.com/behejNqQs/trx.svg"
+							alt=""
+						/>
+						<h3 class="subtitle biggest-gain-subtitle">
+							Toms
+						</h3>
+					</div>
+				</div>
+				<h2 class="number biggest-gain-number">
+					1.32%
+					<ion-icon
+						class="up-arrow"
+						name="caret-up-outline"
+					></ion-icon>
+				</h2>
+			</div>
+			<div class="glance-box biggest-loss loss shadow">
+				<div>
+					<h2 class="title">Biggest Loss</h2>
+					<div class="glance-coin">
+						<img
+							class="icon biggest-loss-icon"
+							src="https://cdn.coinranking.com/behejNqQs/trx.svg"
+							alt=""
+						/>
+						<h3 class="subtitle biggest-loss-subtitle">
+							YAK
+						</h3>
+					</div>
+				</div>
+
+				<h2 class="number biggest-loss-number">
+					12.59%
+					<ion-icon
+						class="down-arrow"
+						name="caret-down-outline"
+					></ion-icon>
+				</h2>
+			</div>
+		</aside>
+	</section>
+
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	<script src="model.js" defer></script>
+	<script
+		type="module"
+		src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+	></script>
+	<script
+		nomodule
+		src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+	></script>
+	<body></body>
+</html>
