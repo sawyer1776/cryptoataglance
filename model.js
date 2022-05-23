@@ -85,7 +85,7 @@ function renderTable(sorted) {
                 </td>
                 <td class="market-cap">$${(
 									item.marketCap / 1000000000
-								).toFixed(2)}B</td>
+								).toFixed(0)}B</td>
                 <td class="price">$${dollarRound(
 									item.price
 								)}</td>
@@ -171,6 +171,8 @@ function renderGlance(
 }
 
 const highestChange = function (data) {
+	highest = '';
+	highestCoin = '';
 	data.coins.forEach((coin) => {
 		if (+coin.change > +highest) {
 			highest = coin.change;
@@ -180,6 +182,8 @@ const highestChange = function (data) {
 };
 
 const lowestChange = function (data) {
+	lowest = '';
+	lowestCoin = '';
 	data.coins.forEach((coin) => {
 		if (+coin.change < +lowest) {
 			lowest = coin.change;
@@ -190,8 +194,11 @@ const lowestChange = function (data) {
 
 const avgChange = function (data) {
 	let total = 0;
+	totalAvg = '';
 	data.coins.forEach((coin) => {
-		total = +coin.change + total;
+		if (+coin.change !== Infinity) {
+			total = +coin.change + total;
+		}
 	});
 	totalAvg = total / data.coins.length;
 };
@@ -305,16 +312,17 @@ const listenPagination = function () {
 
 const goForward = function () {
 	state.page++;
-	console.log(state.page);
+
 	renderPaginate(state.page);
 };
 const goBack = function () {
 	state.page--;
-	console.log(state.page);
+
 	renderPaginate(state.page);
 };
 
 const renderBtns = function () {
+	console.log('rendering btns');
 	paginationBtns.innerHTML = '';
 	let btnsEl = '';
 	//pg 1 and there are more pages
@@ -326,6 +334,7 @@ const renderBtns = function () {
 		<button class="btn btn-page-forward shadow">Page ${
 			state.page + 1
 		} <ion-icon name="arrow-forward-outline"></ion-icon></button>`;
+		console.log('page one of more');
 
 		// forwardBtn.addEventListener('click', goForward);
 	}
@@ -335,8 +344,7 @@ const renderBtns = function () {
 		state.page == 1 &&
 		state.resultsPerPage >= data.coins.length
 	)
-		console.log('1 and no more pages');
-
+		console.log('1 of 1');
 	//other pg and there are more and prev pages
 	if (
 		state.page > 1 &&
@@ -348,6 +356,7 @@ const renderBtns = function () {
 		<button class="btn btn-page-forward shadow">Page ${
 			state.page + 1
 		} <ion-icon name="arrow-forward-outline"></ion-icon></button>`;
+		console.log('more and prev');
 	}
 
 	//last pg and there are prev pages
@@ -358,12 +367,15 @@ const renderBtns = function () {
 		btnsEl = `<button class="btn btn-page-back"><ion-icon name="arrow-back-outline"></ion-icon>Page ${
 			state.page - 1
 		} </button>`;
+		console.log('last page');
 	}
 	paginationBtns.insertAdjacentHTML('beforeend', btnsEl);
 };
 
 const renderPaginate = function (page) {
+	console.log('render page');
 	state.page = page;
+	console.log(state.page);
 	state.start = (state.page - 1) * state.resultsPerPage;
 	state.end = state.page * state.resultsPerPage;
 	renderTable(sortable.slice(state.start, state.end));
@@ -424,5 +436,7 @@ document
 			);
 		const timeBtn = e.target.closest('.time-int');
 		timeBtn.classList.add('time-active');
+		//fetches data with the new time and rerenders
+
 		getCoins(timeBtn.dataset.time);
 	});
